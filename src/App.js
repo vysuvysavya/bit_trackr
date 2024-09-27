@@ -21,7 +21,6 @@ function App() {
     <BrowserRouter>
       <div className={classes.App}>
         <Header />
-        {/* Use Routes and element prop for React Router v6 */}
         <Routes>
           <Route path="/" element={<Homepage />} exact />
           <Route path="/coins/:id" element={<CoinPage />} exact />
