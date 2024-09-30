@@ -7,35 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { makeStyles } from '@mui/styles'; // You can continue using makeStyles if necessary, or switch to MUI's new styling solution
-
 import { useNavigate } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    flex: 1,
-    color: "gold",
-    fontFamily: "Montserrat",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-  select: {
-    border: "1px solid white", // Set border color to white
-    "& .MuiSelect-select": {
-      color: "white", // Set text color for the selected value
-    },
-    "& .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white", // Set border color for outlined input
-    },
-    "&:hover .MuiOutlinedInput-notchedOutline": {
-      borderColor: "gold", // Change border color on hover
-    },
-    "& .MuiMenuItem-root": {
-      color: "black", // Set color of MenuItems
-    },
-  },
-}));
 
 const darkTheme = createTheme({
   palette: {
@@ -47,9 +20,7 @@ const darkTheme = createTheme({
 });
 
 function Header() {
-  const classes = useStyles();
   const { currency, setCurrency } = CryptoState();
-
   const navigate = useNavigate();
 
   return (
@@ -60,17 +31,38 @@ function Header() {
             <Typography
               onClick={() => navigate(`/`)}
               variant="h6"
-              className={classes.title}
+              sx={{
+                flex: 1,
+                color: "gold",
+                fontFamily: "Montserrat",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
             >
-              Crypto Hunter
+              BitTrackr
             </Typography>
             <Select
               variant="outlined"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
               value={currency}
-              className={classes.select} // Apply custom styles here
-              style={{ width: 100, height: 40, marginLeft: 15 }}
+              sx={{
+                width: 100,
+                height: 40,
+                marginLeft: 2, // Space between the Typography and Select
+                color: "white",
+                border: "1px solid white",
+                "& .MuiSelect-select": {
+                  color: "white",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "white",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "gold",
+                },
+                "& .MuiMenuItem-root": {
+                  color: "black", // Set color of MenuItems
+                },
+              }}
               onChange={(e) => setCurrency(e.target.value)}
             >
               <MenuItem value={"USD"}>USD</MenuItem>

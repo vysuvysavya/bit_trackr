@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { TrendingCoins } from "../../config/api";
 import { CryptoState } from "../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
+import { Box } from "@mui/material";
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
@@ -17,7 +18,7 @@ const Carousel = () => {
 
   useEffect(() => {
     fetchTrendingCoins();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
 
   const items = trending.map((coin) => {
@@ -46,7 +47,7 @@ const Carousel = () => {
           &nbsp;
           <span
             style={{
-              color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+              color: profit ? "rgb(14, 203, 129)" : "red",
               fontWeight: 500,
             }}
           >
@@ -71,8 +72,8 @@ const Carousel = () => {
   };
 
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         height: "50%",
         display: "flex",
         alignItems: "center",
@@ -89,7 +90,7 @@ const Carousel = () => {
         items={items}
         autoPlay
       />
-    </div>
+    </Box>
   );
 };
 

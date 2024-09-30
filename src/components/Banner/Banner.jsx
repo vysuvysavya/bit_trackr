@@ -1,64 +1,33 @@
-import { Container, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Container, Typography, Box } from "@mui/material";
 import Carousel from "./Carousel";
 
-const useStyles = makeStyles((theme) => ({
-  banner: {
-    backgroundImage: "url(./banner2.jpg)",
-  },
-  bannerContent: {
-    height: 400,
-    display: "flex",
-    flexDirection: "column",
-    paddingTop: 25,
-    justifyContent: "space-around",
-  },
-  tagline: {
-    display: "flex",
-    height: "40%",
-    flexDirection: "column",
-    justifyContent: "center",
-    textAlign: "center",
-  },
-  carousel: {
-    height: "50%",
-    display: "flex",
-    alignItems: "center",
-  },
-}));
-
-function Banner() {
-  const classes = useStyles();
-
+const Banner = () => {
   return (
-    <div className={classes.banner}>
-      <Container className={classes.bannerContent}>
-        <div className={classes.tagline}>
-          <Typography
-            variant="h2"
-            style={{
-              fontWeight: "bold",
-              marginBottom: 15,
-              fontFamily: "Montserrat",
-            }}
-          >
-            Crypto Hunter
+    <Box
+      sx={{
+        backgroundImage: "url(./banner2.jpg)",
+        height: 400,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
+        paddingTop: 3,
+      }}
+    >
+      <Container>
+        <Box sx={{ height: "40%", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
+          <Typography variant="h2" sx={{ fontWeight: "bold", mb: 2, fontFamily: "Montserrat" }}>
+            BitTrackr
           </Typography>
-          <Typography
-            variant="subtitle2"
-            style={{
-              color: "darkgrey",
-              textTransform: "capitalize",
-              fontFamily: "Montserrat",
-            }}
-          >
+          <Typography variant="subtitle2" sx={{ color: "darkgrey", textTransform: "capitalize", fontFamily: "Montserrat" }}>
             Get all the Info regarding your favorite Crypto Currency
           </Typography>
-        </div>
-        <Carousel />
+        </Box>
+        <Box sx={{ height: "50%", display: "flex", alignItems: "center" }}>
+          <Carousel />
+        </Box>
       </Container>
-    </div>
+    </Box>
   );
-}
+};
 
-export default Banner
+export default Banner;

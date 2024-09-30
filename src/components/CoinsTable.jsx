@@ -46,7 +46,7 @@ export default function CoinsTable() {
     setLoading(true);
     try {
       const { data } = await axios.get(CoinList(currency));
-      setCoins(data);
+       setCoins(data);
     } catch (error) {
       console.error("Failed to fetch coins:", error);
       alert("Failed to load data. Please check your network or API.");
